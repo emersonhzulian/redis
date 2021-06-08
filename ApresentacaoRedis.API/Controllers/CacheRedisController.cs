@@ -12,7 +12,7 @@ namespace ApresentacaoRedis.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class RedisController : ControllerBase
+    public class CacheRedisController : ControllerBase
     {
         [HttpGet]
         public async Task<int> Get([FromServices] IDistributedCache cache)
@@ -25,9 +25,7 @@ namespace ApresentacaoRedis.API.Controllers
             }
             else
             {
-                var rng = new Random();
-
-                result = rng.Next(1, 100); 
+                result = RealizaMuitoProcessamento();
                 
                 await cache.SetRecordAsync<int>("testeEmerson", result);
             }

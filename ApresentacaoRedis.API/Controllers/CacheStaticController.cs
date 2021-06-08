@@ -12,7 +12,7 @@ namespace ApresentacaoRedis.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class TesteCacheStaticController : ControllerBase
+    public class CacheStaticController : ControllerBase
     {
         public static int? staticVariable = null;
 

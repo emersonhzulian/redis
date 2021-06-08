@@ -12,7 +12,7 @@ namespace ApresentacaoRedis.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class RedisSimplesController : ControllerBase
+    public class CacheRedisSimplesController : ControllerBase
     {
         [HttpGet]
         public async Task<int> Get([FromServices] IDistributedCache cache)
@@ -28,11 +28,11 @@ namespace ApresentacaoRedis.API.Controllers
                     new DistributedCacheEntryOptions()
                     {
                         //Quanto tempo o cache deve ficar armazenado (independente do tempo que se passou desde a última utilização)
-                        AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(60),
+                        AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(20),
 
-                        //Quanto tempo o cache deve ficar armazenado (independente do tempo que se passou desde a última utilização)
-                        SlidingExpiration =  TimeSpan.FromSeconds(20)
-                    }        
+                        //Quanto tempo o cache deve ficar armazenado (dependendo do tempo que se passou desde a última utilização)
+                        SlidingExpiration =  TimeSpan.FromSeconds(10)
+                    }
                 );
             }
             else
