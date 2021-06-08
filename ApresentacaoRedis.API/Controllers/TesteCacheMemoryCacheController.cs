@@ -24,10 +24,10 @@ namespace ApresentacaoRedis.API.Controllers
                 entry =>
                 {
                     //Quanto tempo o cache deve ficar armazenado (independente do tempo que se passou desde a última utilização)
-                    entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(20);
+                    entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(60);
 
                     //Quanto tempo o cache deve ficar armazenado (independente do tempo que se passou desde a última utilização)
-                    entry.SlidingExpiration = TimeSpan.FromSeconds(5);
+                    entry.SlidingExpiration = TimeSpan.FromSeconds(20);
 
                     //Valor a ser armazenado no cache
                     return RealizaMuitoProcessamento();
